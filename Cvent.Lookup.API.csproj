@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9480C591-D9EF-414E-A43C-E68FDCE08CEE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cvent.Lookup.API</RootNamespace>
+    <AssemblyName>Cvent.Lookup.API</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TeamBuildOutDir) != '' ">
+    <OutDir>$(TeamBuildOutDir)\$(MSBuildProjectName)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\documentation.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\documentation.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Autofac.3.3.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Autofac.WebApi2.3.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Couchbase.NetClient, Version=2.2.8.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\CouchbaseNetClient.2.2.8\lib\net45\Couchbase.NetClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cvent.Accounts.Client">
+      <HintPath>$(SolutionDir)\packages\Cvent.Accounts.Client.1.1.1398-PROD\lib\net45\Cvent.Accounts.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Accounts.DomainEntity, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Accounts.DomainEntity.1.1.1398-PROD\lib\net45\Cvent.Accounts.DomainEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Analytics.Client">
+      <HintPath>$(SolutionDir)\packages\Cvent.Analytics.Client.2.0.80-SNAPSHOT\lib\net45\Cvent.Analytics.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Antivirus, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Antivirus.1.1.13\lib\net40\Cvent.Antivirus.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Antivirus.Scan, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Antivirus.1.1.13\lib\net40\Cvent.Antivirus.Scan.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Authentication.Client">
+      <HintPath>$(SolutionDir)\packages\Cvent.Authentication.Client.1.1.521-prod-16985\lib\net45\Cvent.Authentication.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Authentication.DomainEntity">
+      <HintPath>$(SolutionDir)\packages\Cvent.Authentication.DomainEntity.1.1.521-prod-16985\lib\net45\Cvent.Authentication.DomainEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Caching.API, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Caching.API.2.0.149-PROD\lib\net45\Cvent.Caching.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Couchbase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Cvent.Couchbase.1.0.14\lib\net45\Cvent.Couchbase.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cvent.Experiments, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Experiments.1.0.140\lib\net45\Cvent.Experiments.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.AdvancedFilters, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.AdvancedFilters.1.1.77-PROD\lib\net45\Cvent.Framework.AdvancedFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.API, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.API.1.2.203-SNAPSHOT\lib\net45\Cvent.Framework.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Client, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Client.2.0.161-SNAPSHOT\lib\net45\Cvent.Framework.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.DataAccess.1.0.141\lib\net45\Cvent.Framework.DataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cvent.Framework.ExpressionParsing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.ExpressionParsing.1.0.72-PROD\lib\net45\Cvent.Framework.ExpressionParsing.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Localization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Localization.1.0.91-PROD\lib\net45\Cvent.Framework.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Matchsettings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Matchsettings.1.0.83-PROD\lib\net45\Cvent.Framework.Matchsettings.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Shared, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Shared.1.0.183\lib\net45\Cvent.Framework.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Tracing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Tracing.1.0.132-master\lib\net45\Cvent.Framework.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Tracing.EntityFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Tracing.EntityFramework.1.0.66-PROD\lib\net45\Cvent.Framework.Tracing.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Validation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Validation.1.0.187-PROD\lib\net45\Cvent.Framework.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Logging">
+      <HintPath>$(SolutionDir)\packages\Cvent.Logging.2.0.158\lib\net40\Cvent.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.ResourceStrings.API, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.ResourceStrings.API.1.0.395-S432\lib\net45\Cvent.ResourceStrings.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Security.1.0.127\lib\net45\Cvent.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Shared.DomainEntity, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Shared.DomainEntity.1.1.1603-PROD\lib\net45\Cvent.Shared.DomainEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.User.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.User.Client.1.0.1776-PROD\lib\net45\Cvent.User.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.User.DomainEntity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.User.DomainEntity.1.0.1776-PROD\lib\net45\Cvent.User.DomainEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="experiments-shared-dotnet-2.0.39">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\experiments-shared-dotnet-2.0.39.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=8.0.5449.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.0.5449.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Jdbc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=8.0.5449.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=8.0.5449.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=8.0.5449.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Util.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.0.5449.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=8.0.5449.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>$(SolutionDir)\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Refit">
+      <HintPath>$(SolutionDir)\packages\refit.2.4.1\lib\Net45\Refit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Tracing, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Tracing.5.1.2\lib\net45\System.Web.Http.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.WebHost.5.1.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>$(SolutionDir)\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebApiContrib.Formatting.ProtoBuf">
+      <HintPath>$(SolutionDir)\packages\WebApiContrib.Formatting.ProtoBuf.0.9.5.0\lib\net40\WebApiContrib.Formatting.ProtoBuf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\DependencyConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountEmailTemplateTypeController.cs" />
+    <Compile Include="Controllers\AgendaPageLayoutController.cs" />
+    <Compile Include="Controllers\AirSeatTypeController.cs" />
+    <Compile Include="Controllers\AirTicketTypeController.cs" />
+    <Compile Include="Controllers\AudienceTypeController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BadgeTypesController.cs" />
+    <Compile Include="Controllers\BudgetItemStatusController.cs" />
+    <Compile Include="Controllers\BudgetItemTypeController.cs" />
+    <Compile Include="Controllers\CalendarAuthorizationTypeController.cs" />
+    <Compile Include="Controllers\CalendarDescriptionController.cs" />
+    <Compile Include="Controllers\BarcodeTypesController.cs" />
+    <Compile Include="Controllers\BarcodeDelimiterController.cs" />
+    <Compile Include="Controllers\CarRentalCarTypeController.cs" />
+    <Compile Include="Controllers\ContactImportModeController.cs" />
+    <Compile Include="Controllers\ContactGroupImportModeController.cs" />
+    <Compile Include="Controllers\ContactLoadActionController.cs" />
+    <Compile Include="Controllers\ContactMatchByController.cs" />
+    <Compile Include="Controllers\ContactPrepopulationTypeController.cs" />
+    <Compile Include="Controllers\ContactGroupTypeController.cs" />
+    <Compile Include="Controllers\ProductConfigController.cs" />
+    <Compile Include="Controllers\EmailAddressStatusController.cs" />
+    <Compile Include="Controllers\EventTaskPriorityController.cs" />
+    <Compile Include="Controllers\EventTypeController.cs" />
+    <Compile Include="Controllers\ExternalIntegrationActionTypeController.cs" />
+    <Compile Include="Controllers\ExternalIntegrationSuccessFlagController.cs" />
+    <Compile Include="Controllers\LastOptOutByController.cs" />
+    <Compile Include="Controllers\FieldUpdatedThroughController.cs" />
+    <Compile Include="Controllers\ImportQueueErrorCodeController.cs" />
+    <Compile Include="Controllers\ImportErrorController.cs" />
+    <Compile Include="Controllers\ImportQueueStatusController.cs" />
+    <Compile Include="Controllers\EntityTypeController.cs" />
+    <Compile Include="Controllers\MonthNameController.cs" />
+    <Compile Include="Controllers\ProductStatusController.cs" />
+    <Compile Include="Controllers\ProductTypeController.cs" />
+    <Compile Include="Controllers\QuickLinkController.cs" />
+    <Compile Include="Controllers\RateNameDisplayController.cs" />
+    <Compile Include="Controllers\RespondedThroughController.cs" />
+    <Compile Include="Controllers\RfpOfferingStatusController.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceImportActionTypeController.cs" />
+    <Compile Include="Controllers\SurveyEmailAlertStatusController.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceImportErrorController.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceQueueStatusController.cs" />
+    <Compile Include="Controllers\TargetRequestController.cs" />
+    <Compile Include="Controllers\SurveyEmailStatusController.cs" />
+    <Compile Include="Controllers\StockUnitController.cs" />
+    <Compile Include="Controllers\UserAccessAreaController.cs" />
+    <Compile Include="Controllers\VenueTypeController.cs" />
+    <Compile Include="Controllers\ServiceTypeController.cs" />
+    <Compile Include="Controllers\OfferingStatusController.cs" />
+    <Compile Include="Controllers\RFPStatusController.cs" />
+    <Compile Include="Controllers\RFPTypeController.cs" />
+    <Compile Include="Controllers\DateQuestionDisplayTypeController.cs" />
+    <Compile Include="Controllers\SurveyQuotaQualifiedController.cs" />
+    <Compile Include="Controllers\EmailStatusController.cs" />
+    <Compile Include="Controllers\JournalEntryTypeController.cs" />
+    <Compile Include="Controllers\RegionConfigController.cs" />
+    <Compile Include="Controllers\SurveyStatusController.cs" />
+    <Compile Include="Controllers\ReportFormatController.cs" />
+    <Compile Include="Controllers\CventPageController.cs" />
+    <Compile Include="Controllers\CventTabController.cs" />
+    <Compile Include="Controllers\CventNewsLetterController.cs" />
+    <Compile Include="Controllers\CustomFieldTypeController.cs" />
+    <Compile Include="Controllers\OfferingCostCategoryController.cs" />
+    <Compile Include="Controllers\OfferingCostTypeController.cs" />
+    <Compile Include="Controllers\ReportCategoryController.cs" />
+    <Compile Include="Controllers\DisplayMeasurementController.cs" />
+    <Compile Include="Controllers\LicenseTypeController.cs" />
+    <Compile Include="Controllers\GenderController.cs" />
+    <Compile Include="Controllers\RespondentStatusController.cs" />
+    <Compile Include="Controllers\CsnRegionController.cs" />
+    <Compile Include="Controllers\CsnSubregionController.cs" />
+    <Compile Include="Controllers\CultureInfoTypeController.cs" />
+    <Compile Include="Controllers\CustomErrorMessageController.cs" />
+    <Compile Include="Controllers\DataTagController.cs" />
+    <Compile Include="Controllers\EmailTagController.cs" />
+    <Compile Include="Controllers\EmailTagGroupController.cs" />
+    <Compile Include="Controllers\RfpMessagePreferenceTypeController.cs" />
+    <Compile Include="Controllers\SurveyEmailAudienceTypeController.cs" />
+    <Compile Include="Controllers\SurveyEmailTypeController.cs" />
+    <Compile Include="Controllers\WidgetLookupTypeController.cs" />
+    <Compile Include="Controllers\SurveyQuestionTypeController.cs" />
+    <Compile Include="Controllers\WidgetTypesController.cs" />
+    <Compile Include="Controllers\CustomReport\DateGroupsController.cs" />
+    <Compile Include="Controllers\CustomReport\FieldCategoriesController.cs" />
+    <Compile Include="Controllers\CustomReport\FieldSubcategoriesController.cs" />
+    <Compile Include="Controllers\CustomReport\CustomReportTypeCategoriesController.cs" />
+    <Compile Include="Controllers\InviteeActionChangeTypeController.cs" />
+    <Compile Include="Controllers\InviteeActionController.cs" />
+    <Compile Include="Controllers\CustomReport\CustomReportTypesController.cs" />
+    <Compile Include="Controllers\EventViewShortCutController.cs" />
+    <Compile Include="Controllers\ResponseMethodController.cs" />
+    <Compile Include="Controllers\LastSavedRegistrationPageNameController.cs" />
+    <Compile Include="Controllers\EventInviterController.cs" />
+    <Compile Include="Controllers\QRCodeTypesController.cs" />
+    <Compile Include="Controllers\DaySpanController.cs" />
+    <Compile Include="Controllers\ReservationStatusController.cs" />
+    <Compile Include="Controllers\CustomFieldFormatTypesController.cs" />
+    <Compile Include="Controllers\CventImageController.cs" />
+    <Compile Include="Controllers\EmailAlertRecipientTypesController.cs" />
+    <Compile Include="Controllers\EmailAlertTypeController.cs" />
+    <Compile Include="Controllers\EmailAudienceTypeController.cs" />
+    <Compile Include="Controllers\EmailTypeController.cs" />
+    <Compile Include="Controllers\EventCalendarLinkDestinationController.cs" />
+    <Compile Include="Controllers\CventFieldController.cs" />
+    <Compile Include="Controllers\ImportFieldController.cs" />
+    <Compile Include="Controllers\EventCategoryController.cs" />
+    <Compile Include="Controllers\EventClosedReasonController.cs" />
+    <Compile Include="Controllers\EventRegistrationStatusController.cs" />
+    <Compile Include="Controllers\ImportLimitsController.cs" />
+    <Compile Include="Controllers\InviteeStatusController.cs" />
+    <Compile Include="Controllers\LocaleController.cs" />
+    <Compile Include="Controllers\MetroAreaController.cs" />
+    <Compile Include="Controllers\MetroAreaGroupController.cs" />
+    <Compile Include="Controllers\OverviewTipController.cs" />
+    <Compile Include="Controllers\PaymentMethodsController.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceIntegrationPointActionTypesController.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceIntegrationPointTypesController.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceMappableCventFieldsController.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceMultipleMatchActionType.cs" />
+    <Compile Include="Controllers\Salesforce\SalesforceObjectTypesController.cs" />
+    <Compile Include="Controllers\SearchFieldController.cs" />
+    <Compile Include="Controllers\StateCategoriesController.cs" />
+    <Compile Include="Controllers\PaperStocksController.cs" />
+    <Compile Include="Controllers\SurveyTypesController.cs" />
+    <Compile Include="Controllers\TimeZoneController.cs" />
+    <Compile Include="Controllers\VenueAffiliationController.cs" />
+    <Compile Include="Controllers\AirportController.cs" />
+    <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Controllers\ReportFieldController.cs" />
+    <Compile Include="Controllers\VenueBrandController.cs" />
+    <Compile Include="Controllers\VenueChainController.cs" />
+    <Compile Include="Controllers\DocumentTypesController.cs" />
+    <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\EmailTemplateController.cs" />
+    <Compile Include="Controllers\EmailTemplateTextController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\LookupStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LookupStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.*.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="appsettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="connections.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="appsettings.*.config">
+      <DependentUpon>appsettings.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="connections.*.config">
+      <DependentUpon>connections.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="newrelic.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="newrelic.*.config">
+      <DependentUpon>newrelic.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cvent.Lookup.API.*.log4net" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="log4net.*.config">
+      <DependentUpon>log4net.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cvent.Lookup.Client\Cvent.Lookup.Client.csproj">
+      <Project>{27dcd545-c108-4bb6-b06a-6f2daf768891}</Project>
+      <Name>Cvent.Lookup.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cvent.Lookup.DomainEntity\Cvent.Lookup.DomainEntity.csproj">
+      <Project>{899a0215-3562-4f0b-be3c-7cccb19a9078}</Project>
+      <Name>Cvent.Lookup.DomainEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cvent.Lookup.Service\Cvent.Lookup.Service.csproj">
+      <Project>{5456a20c-0b8b-4355-877e-fe47adf97d60}</Project>
+      <Name>Cvent.Lookup.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LookupStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LookupStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\packages\MSBuild.Microsoft.VisualStudio.Web.targets.11.0.2.1\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(SolutionDir)\packages\MSBuild.Microsoft.VisualStudio.Web.targets.11.0.2.1\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets')" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63405</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/api/lookups/v1</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="$(SolutionDir)\.octopack\OctoPack.targets" />
+  <Import Project="$(SolutionDir)\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('$(SolutionDir)\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\MSBuild.Microsoft.VisualStudio.Web.targets.11.0.2.1\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\MSBuild.Microsoft.VisualStudio.Web.targets.11.0.2.1\tools\VSToolsPath\WebApplications\Microsoft.WebApplication.targets'))" />
+  </Target>
+</Project>
