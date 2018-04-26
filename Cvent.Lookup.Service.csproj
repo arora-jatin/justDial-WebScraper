@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5456A20C-0B8B-4355-877E-FE47ADF97D60}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cvent.Lookup.Service</RootNamespace>
+    <AssemblyName>Cvent.Lookup.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TeamBuildOutDir) != '' ">
+    <OutDir>$(TeamBuildOutDir)\$(MSBuildProjectName)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Cvent.Lookup.Service.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Cvent.Lookup.Service.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Autofac.3.3.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Accounts.DomainEntity">
+      <HintPath>$(SolutionDir)\packages\Cvent.Accounts.DomainEntity.1.1.1398-PROD\lib\net45\Cvent.Accounts.DomainEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Event.GuestResourceStrings, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Cvent.Event.GuestResourceStrings.1.1.274\lib\net45\Cvent.Event.GuestResourceStrings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cvent.Experiments, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Cvent.Experiments.1.0.140\lib\net45\Cvent.Experiments.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cvent.Framework.ExpressionParsing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.ExpressionParsing.1.0.72-PROD\lib\net45\Cvent.Framework.ExpressionParsing.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Localization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Localization.1.0.91-PROD\lib\net45\Cvent.Framework.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Shared, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Shared.1.0.183\lib\net45\Cvent.Framework.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Framework.Validation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Framework.Validation.1.0.187-PROD\lib\net45\Cvent.Framework.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Logging.2.0.158\lib\net40\Cvent.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.ResourceStrings.API, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.ResourceStrings.API.1.0.395-S432\lib\net45\Cvent.ResourceStrings.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Cvent.Shared.DomainEntity, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Cvent.Shared.DomainEntity.1.1.1603-PROD\lib\net45\Cvent.Shared.DomainEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="experiments-shared-dotnet-2.0.39">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\experiments-shared-dotnet-2.0.39.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Jdbc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.Util.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.Runtime">
+      <HintPath>$(SolutionDir)\packages\experiments-shared-dotnet.2.0.39\lib\net45\\IKVM.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountEmailTemplateType\AccountEmailTemplateTypeService.cs" />
+    <Compile Include="AccountEmailTemplateType\IAccountEmailTemplateTypeService.cs" />
+    <Compile Include="AgendaPageLayout\AgendaPageLayoutService.cs" />
+    <Compile Include="AgendaPageLayout\IAgendaPageLayoutService.cs" />
+    <Compile Include="Airport\AirportService.cs" />
+    <Compile Include="Airport\IAirportService.cs" />
+    <Compile Include="AirSeatType\AirSeatTypeService.cs" />
+    <Compile Include="AirSeatType\IAirSeatTypeService.cs" />
+    <Compile Include="AirTicketType\AirTicketTypeService.cs" />
+    <Compile Include="AirTicketType\IAirTicketTypeService.cs" />
+    <Compile Include="AudienceType\AudienceTypeService.cs" />
+    <Compile Include="AudienceType\IAudienceTypeService.cs" />
+    <Compile Include="BadgeType\BadgeTypeService.cs" />
+    <Compile Include="BadgeType\IBadgeTypeService.cs" />
+    <Compile Include="BudgetItemStatus\BudgetItemStatusService.cs" />
+    <Compile Include="BudgetItemStatus\IBudgetItemStatusService.cs" />
+    <Compile Include="BudgetItemType\BudgetItemTypeService.cs" />
+    <Compile Include="BudgetItemType\IBudgetItemTypeService.cs" />
+    <Compile Include="CalendarAuthorizationType\CalendarAuthorizationTypeService.cs" />
+    <Compile Include="CalendarAuthorizationType\ICalendarAuthorizationTypeService.cs" />
+    <Compile Include="CalendarDescription\CalendarDescriptionService.cs" />
+    <Compile Include="CalendarDescription\ICalendarDescriptionService.cs" />
+    <Compile Include="CarRentalCarType\CarRentalCarTypeService.cs" />
+    <Compile Include="CarRentalCarType\ICarRentalCarTypeService.cs" />
+    <Compile Include="Composition\EmailLookupServiceModule.cs" />
+    <Compile Include="Composition\LookupServiceModule.cs" />
+    <Compile Include="BarcodeType\IBarcodeTypeService.cs" />
+    <Compile Include="BarcodeType\BarcodeTypeService.cs" />
+    <Compile Include="BarcodeDelimiter\IBarcodeDelimiterService.cs" />
+    <Compile Include="BarcodeDelimiter\BarcodeDelimiterService.cs" />
+    <Compile Include="ContactGroupImportMode\ContactGroupImportModeService.cs" />
+    <Compile Include="ContactGroupImportMode\IContactGroupImportModeService.cs" />
+    <Compile Include="ContactImportMode\ContactImportModeService.cs" />
+    <Compile Include="ContactImportMode\IContactImportModeService.cs" />
+    <Compile Include="ContactLoadAction\ContactLoadActionService.cs" />
+    <Compile Include="ContactLoadAction\IContactLoadActionService.cs" />
+    <Compile Include="ContactMatchBy\ContactMatchByService.cs" />
+    <Compile Include="ContactMatchBy\IContactMatchByService.cs" />
+    <Compile Include="ContactPrepopulationType\ContactPrepopulationTypeService.cs" />
+    <Compile Include="ContactPrepopulationType\IContactPrepopulationTypeService.cs" />
+    <Compile Include="EmailAddressStatus\EmailAddressStatusService.cs" />
+    <Compile Include="EmailAddressStatus\IEmailAddressStatusService.cs" />
+    <Compile Include="EventTaskPriority\EventTaskPriorityService.cs" />
+    <Compile Include="EventTaskPriority\IEventTaskPriorityService.cs" />
+    <Compile Include="EventType\EventTypeService.cs" />
+    <Compile Include="EventType\IEventTypeService.cs" />
+    <Compile Include="ExternalIntegrationActionType\ExternalIntegrationActionTypeService.cs" />
+    <Compile Include="ExternalIntegrationActionType\IExternalIntegrationActionTypeService.cs" />
+    <Compile Include="ExternalIntegrationSuccessFlag\ExternalIntegrationSuccessFlagService.cs" />
+    <Compile Include="ExternalIntegrationSuccessFlag\IExternalIntegrationSuccessFlagService.cs" />
+    <Compile Include="LastOptOutBy\LastOptOutByService.cs" />
+    <Compile Include="LastOptOutBy\ILastOptOutByService.cs" />
+    <Compile Include="FieldUpdatedThrough\FieldUpdatedThroughService.cs" />
+    <Compile Include="FieldUpdatedThrough\IFieldUpdatedThroughService.cs" />
+    <Compile Include="ImportQueueErrorCode\IImportQueueErrorCodeService.cs" />
+    <Compile Include="ImportQueueErrorCode\ImportQueueErrorCodeService.cs" />
+    <Compile Include="ImportError\ImportErrorService.cs" />
+    <Compile Include="ImportError\IImportErrorService.cs" />
+    <Compile Include="DateQuestionDisplayType\IDateQuestionDisplayTypeService.cs" />
+    <Compile Include="DateQuestionDisplayType\DateQuestionDisplayTypeService.cs" />
+    <Compile Include="ProductConfig\IProductConfigService.cs" />
+    <Compile Include="ProductConfig\ProductConfigService.cs" />
+    <Compile Include="ProductStatus\IProductStatusService.cs" />
+    <Compile Include="ProductStatus\ProductStatusService.cs" />
+    <Compile Include="QuickLink\IQuickLinkService.cs" />
+    <Compile Include="QuickLink\QuickLinkService.cs" />
+    <Compile Include="RateNameDisplay\IRateNameDisplayService.cs" />
+    <Compile Include="RateNameDisplay\RateNameDisplayService.cs" />
+    <Compile Include="Salesforce\ISalesforceImportActionTypeService.cs" />
+    <Compile Include="SurveyEmailAlertStatus\ISurveyEmailAlertStatusService.cs" />
+    <Compile Include="Salesforce\SalesforceImportActionTypeService.cs" />
+    <Compile Include="Salesforce\ISalesforceImportErrorService.cs" />
+    <Compile Include="Salesforce\SalesforceImportErrorService.cs" />
+    <Compile Include="Salesforce\SalesforceQueueStatusService.cs" />
+    <Compile Include="SurveyEmailAlertStatus\SurveyEmailAlertStatusService.cs" />
+    <Compile Include="SurveyEmailStatus\ISurveyEmailStatusService.cs" />
+    <Compile Include="SurveyEmailStatus\SurveyEmailStatusService.cs" />
+    <Compile Include="SurveyQuotaQualified\ISurveyQuotaQualifiedService.cs" />
+    <Compile Include="SurveyQuotaQualified\SurveyQuotaQualifiedService.cs" />
+    <Compile Include="EmailStatus\EmailStatusService.cs" />
+    <Compile Include="EmailStatus\IEmailStatusService.cs" />
+    <Compile Include="EntityType\EntityTypeService.cs" />
+    <Compile Include="EntityType\IEntityTypeService.cs" />
+    <Compile Include="JournalEntryType\IJournalEntryTypeService.cs" />
+    <Compile Include="JournalEntryType\JournalEntryTypeService.cs" />
+    <Compile Include="MonthName\IMonthNameService.cs" />
+    <Compile Include="MonthName\MonthNameService.cs" />
+    <Compile Include="ProductType\IProductTypeService.cs" />
+    <Compile Include="ProductType\ProductTypeService.cs" />
+    <Compile Include="RegionConfig\IRegionConfigService.cs" />
+    <Compile Include="RegionConfig\RegionConfigService.cs" />
+    <Compile Include="ContactGroupType\ContactGroupTypeService.cs" />
+    <Compile Include="ContactGroupType\IContactGroupTypeService.cs" />
+    <Compile Include="ImportQueueStatus\ImportQueueStatusService.cs" />
+    <Compile Include="ImportQueueStatus\IImportQueueStatusService.cs" />
+    <Compile Include="RespondedThrough\IRespondedThroughService.cs" />
+    <Compile Include="RespondedThrough\RespondedThroughService.cs" />
+    <Compile Include="RfpOfferingStatus\IRfpOfferingStatusService.cs" />
+    <Compile Include="RfpOfferingStatus\RfpOfferingStatusService.cs" />
+    <Compile Include="TargetRequest\ITargetRequestService.cs" />
+    <Compile Include="TargetRequest\TargetRequestService.cs" />
+    <Compile Include="StockUnit\StockUnitService.cs" />
+    <Compile Include="StockUnit\IStockUnitService.cs" />
+    <Compile Include="UserAccessArea\IUserAccessAreaService.cs" />
+    <Compile Include="UserAccessArea\UserAccessAreaService.cs" />
+    <Compile Include="VenueType\VenueTypeService.cs" />
+    <Compile Include="VenueType\IVenueTypeService.cs" />
+    <Compile Include="ServiceType\IServiceTypeService.cs" />
+    <Compile Include="ServiceType\ServiceTypeService.cs" />
+    <Compile Include="OfferingStatus\IOfferingStatusService.cs" />
+    <Compile Include="OfferingStatus\OfferingStatusService.cs" />
+    <Compile Include="RFPStatus\IRFPStatusService.cs" />
+    <Compile Include="RFPStatus\RFPStatusService.cs" />
+    <Compile Include="RFPType\IRFPTypeService.cs" />
+    <Compile Include="RFPType\RFPTypeService.cs" />
+    <Compile Include="SurveyStatus\SurveyStatusService.cs" />
+    <Compile Include="SurveyStatus\ISurveyStatusService.cs" />
+    <Compile Include="ReportFormat\ReportFormatService.cs" />
+    <Compile Include="ReportFormat\IReportFormatsService.cs" />
+    <Compile Include="CventPage\CventPageService.cs" />
+    <Compile Include="CventPage\ICventPageService.cs" />
+    <Compile Include="CventTab\CventTabService.cs" />
+    <Compile Include="CventTab\ICventTabService.cs" />
+    <Compile Include="CventNewsLetter\CventNewsLetterService.cs" />
+    <Compile Include="CventNewsLetter\ICventNewsLetterService.cs" />
+    <Compile Include="CustomFieldType\CustomFieldTypeService.cs" />
+    <Compile Include="CustomFieldType\ICustomFieldTypeService.cs" />
+    <Compile Include="OfferingCostCategory\IOfferingCostCategoryService.cs" />
+    <Compile Include="OfferingCostCategory\OfferingCostCategoryService.cs" />
+    <Compile Include="OfferingCostType\IOfferingCostTypeService.cs" />
+    <Compile Include="OfferingCostType\OfferingCostTypeService.cs" />
+    <Compile Include="ReportCategory\ReportCategoryService.cs" />
+    <Compile Include="ReportCategory\IReportCategoryService.cs" />
+    <Compile Include="DisplayMeasurement\DisplayMeasurementService.cs" />
+    <Compile Include="DisplayMeasurement\IDisplayMeasurementService.cs" />
+    <Compile Include="Gender\GenderService.cs" />
+    <Compile Include="Gender\IGenderService.cs" />
+    <Compile Include="LicenseType\LicenseTypeService.cs" />
+    <Compile Include="LicenseType\ILicenseTypeService.cs" />
+    <Compile Include="RespondentStatus\RespondentStatusService.cs" />
+    <Compile Include="RespondentStatus\IRespondentStatusService.cs" />
+    <Compile Include="CsnRegion\CsnRegionService.cs" />
+    <Compile Include="CsnRegion\CsnSubregionService.cs" />
+    <Compile Include="CsnRegion\ICsnRegionService.cs" />
+    <Compile Include="CsnRegion\ICsnSubregionService.cs" />
+    <Compile Include="CultureInfoType\CultureInfoTypeService.cs" />
+    <Compile Include="CultureInfoType\ICultureInfoTypeService.cs" />
+    <Compile Include="CustomErrorMessage\CustomErrorMessageService.cs" />
+    <Compile Include="CustomErrorMessage\ICustomErrorMessageService.cs" />
+    <Compile Include="DataTag\DataTagService.cs" />
+    <Compile Include="DataTag\IDataTagService.cs" />
+    <Compile Include="EmailTagGroup\EmailTagGroupService.cs" />
+    <Compile Include="EmailTagGroup\IEmailTagGroupService.cs" />
+    <Compile Include="EmailTag\EmailTagService.cs" />
+    <Compile Include="EmailTag\IEmailTagService.cs" />
+    <Compile Include="EventGuestSideResources.cs" />
+    <Compile Include="EmailTemplateText\EmailTemplateTextService.cs" />
+    <Compile Include="EmailTemplateText\IEmailTemplateTextService.cs" />
+    <Compile Include="EmailTemplate\EmailTemplateService.cs" />
+    <Compile Include="EmailTemplate\IEmailTemplateService.cs" />
+    <Compile Include="RfpMessagePreferenceType\IRfpMessagePreferenceTypeService.cs" />
+    <Compile Include="RfpMessagePreferenceType\RfpMessagePreferenceTypeService.cs" />
+    <Compile Include="SurveyEmailAudienceType\ISurveyEmailAudienceTypeService.cs" />
+    <Compile Include="SurveyEmailAudienceType\SurveyEmailAudienceTypeService.cs" />
+    <Compile Include="SurveyEmailType\ISurveyEmailTypeService.cs" />
+    <Compile Include="SurveyEmailType\SurveyEmailTypeService.cs" />
+    <Compile Include="WidgetLookupType\IWidgetLookupTypeService.cs" />
+    <Compile Include="WidgetLookupType\WidgetLookupTypeService.cs" />
+    <Compile Include="SurveyQuestionType\ISurveyQuestionTypeService.cs" />
+    <Compile Include="SurveyQuestionType\SurveyQuestionTypeService.cs" />
+    <Compile Include="WidgetType\IWidgetTypeService.cs" />
+    <Compile Include="WidgetType\WidgetTypeService.cs" />
+    <Compile Include="CustomReport\DateGroup\DateGroupService.cs" />
+    <Compile Include="CustomReport\DateGroup\IDateGroupService.cs" />
+    <Compile Include="CustomReport\FieldCategory\FieldCategoryService.cs" />
+    <Compile Include="CustomReport\FieldCategory\IFieldCategoryService.cs" />
+    <Compile Include="CustomReport\FieldSubcategory\FieldSubcategoryService.cs" />
+    <Compile Include="CustomReport\FieldSubcategory\IFieldSubcategoryService.cs" />
+    <Compile Include="CustomReport\CustomReportTypeCategory\CustomReportSubjectAreaCategoryService.cs" />
+    <Compile Include="CustomReport\CustomReportTypeCategory\ICustomReportSubjectAreaCategoryService.cs" />
+    <Compile Include="CustomReport\CustomReportType\CustomReportTypeService.cs" />
+    <Compile Include="CustomReport\CustomReportType\ICustomReportTypeService.cs" />
+    <Compile Include="EventViewShortCut\EventViewShortCutService.cs" />
+    <Compile Include="EventViewShortCut\IEventViewShortCutService.cs" />
+    <Compile Include="InviteeActionChangeType\IInviteeActionChangeTypeService.cs" />
+    <Compile Include="InviteeActionChangeType\InviteeActionChangeTypeService.cs" />
+    <Compile Include="InviteeAction\InviteeActionService.cs" />
+    <Compile Include="InviteeAction\IInviteeActionService.cs" />
+    <Compile Include="ResponseMethod\ResponseMethodService.cs" />
+    <Compile Include="ResponseMethod\IResponseMethodService.cs" />
+    <Compile Include="LastSavedRegistrationPageName\ILastSavedRegistrationPageNameService.cs" />
+    <Compile Include="LastSavedRegistrationPageName\LastSavedRegistrationPageNameService.cs" />
+    <Compile Include="EventInviter\EventInviterService.cs" />
+    <Compile Include="EventInviter\IEventInviterService.cs" />
+    <Compile Include="QRCodeType\QRCodeTypeService.cs" />
+    <Compile Include="QRCodeType\IQRCodeTypeService.cs" />
+    <Compile Include="CventFieldLookup\CventFieldService.cs" />
+    <Compile Include="CventFieldLookup\ICventFieldService.cs" />
+    <Compile Include="DaySpan\DaySpanService.cs" />
+    <Compile Include="DaySpan\IDaySpanService.cs" />
+    <Compile Include="Import\IImportFieldService.cs" />
+    <Compile Include="Import\IImportTypeLimitsService.cs" />
+    <Compile Include="Import\ImportFieldService.cs" />
+    <Compile Include="Composition\SalesforceLookupServiceModule.cs" />
+    <Compile Include="ReservationStatus\ReservationStatusService.cs" />
+    <Compile Include="ReservationStatus\IReservationStatusService.cs" />
+    <Compile Include="CustomField\CustomFieldFormatTypesService.cs" />
+    <Compile Include="CventImage\CventImageService.cs" />
+    <Compile Include="CventImage\ICventImageService.cs" />
+    <Compile Include="EmailAlertRecipientType\EmailAlertRecipientTypeService.cs" />
+    <Compile Include="EmailAlertRecipientType\IEmailAlertRecipientTypeService.cs" />
+    <Compile Include="EmailAlertType\EmailAlertTypeService.cs" />
+    <Compile Include="EmailAlertType\IEmailAlertTypeService.cs" />
+    <Compile Include="EmailAudienceType\EmailAudienceTypeService.cs" />
+    <Compile Include="EmailAudienceType\IEmailAudienceTypeService.cs" />
+    <Compile Include="EmailType\EmailTypeService.cs" />
+    <Compile Include="EmailType\IEmailTypeService.cs" />
+    <Compile Include="EventCalendarLinkDestination\EventCalendarLinkDestinationService.cs" />
+    <Compile Include="EventCalendarLinkDestination\IEventCalendarLinkDestinationService.cs" />
+    <Compile Include="EventCategory\EventCategoryService.cs" />
+    <Compile Include="EventCategory\IEventCategoryService.cs" />
+    <Compile Include="EventClosedReason\EventClosedReasonService.cs" />
+    <Compile Include="EventClosedReason\IEventClosedReasonService.cs" />
+    <Compile Include="EventRegistrationStatus\EventRegistrationStatusService.cs" />
+    <Compile Include="EventRegistrationStatus\IEventRegistrationStatusService.cs" />
+    <Compile Include="Import\ImportTypeLimitsService.cs" />
+    <Compile Include="InviteeStatus\IInviteeStatusService.cs" />
+    <Compile Include="InviteeStatus\InviteeStatusService.cs" />
+    <Compile Include="Locale\ILocaleService.cs" />
+    <Compile Include="Locale\LocaleService.cs" />
+    <Compile Include="MetroArea\IMetroAreaGroupService.cs" />
+    <Compile Include="MetroArea\IMetroAreaService.cs" />
+    <Compile Include="MetroArea\MetroAreaGroupService.cs" />
+    <Compile Include="MetroArea\MetroAreaService.cs" />
+    <Compile Include="OverviewTip\IOverviewTipService.cs" />
+    <Compile Include="OverviewTip\OverviewTipService.cs" />
+    <Compile Include="Salesforce\SalesforceIntegrationPointActionTypesService.cs" />
+    <Compile Include="Salesforce\SalesforceIntegrationPointTypesService.cs" />
+    <Compile Include="Salesforce\SalesforceMappableCventFieldsService.cs" />
+    <Compile Include="Salesforce\SalesforceMultipleMatchActionTypesService.cs" />
+    <Compile Include="Salesforce\SalesforceObjectTypesService.cs" />
+    <Compile Include="Search\ISearchFieldService.cs" />
+    <Compile Include="Search\SearchFieldService.cs" />
+    <Compile Include="State\IStateCategoryService.cs" />
+    <Compile Include="State\StateCategoryService.cs" />
+    <Compile Include="PaperStock\IPaperStockService.cs" />
+    <Compile Include="PaperStock\PaperStockService.cs" />
+    <Compile Include="SurveyType\ISurveyTypeService.cs" />
+    <Compile Include="SurveyType\SurveyTypeService.cs" />
+    <Compile Include="TimeZone\ITimeZoneService.cs" />
+    <Compile Include="TimeZone\TimeZoneService.cs" />
+    <Compile Include="VenueAffiliation\IVenueAffiliationService.cs" />
+    <Compile Include="VenueAffiliation\VenueAffiliationService.cs" />
+    <Compile Include="VenueBrand\IVenueBrandService.cs" />
+    <Compile Include="VenueBrand\VenueBrandService.cs" />
+    <Compile Include="Country\CountryService.cs" />
+    <Compile Include="Country\ICountryService.cs" />
+    <Compile Include="Currency\CurrencyService.cs" />
+    <Compile Include="Currency\ICurrencyService.cs" />
+    <Compile Include="DocumentType\DocumentTypeService.cs" />
+    <Compile Include="DocumentType\IDocumentTypeService.cs" />
+    <Compile Include="PaymentMethod\IPaymentMethodService.cs" />
+    <Compile Include="PaymentMethod\PaymentMethodService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\IReportFieldService.cs" />
+    <Compile Include="Report\ReportFieldService.cs" />
+    <Compile Include="State\IStateService.cs" />
+    <Compile Include="State\StateService.cs" />
+    <Compile Include="VenueChain\VenueChainService.cs" />
+    <Compile Include="VenueChain\IVenueChainService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cvent.Lookup.DataAccess\Cvent.Lookup.DataAccess.csproj">
+      <Project>{48d9e4a9-86c6-4dd6-a547-8d0bbddce69c}</Project>
+      <Name>Cvent.Lookup.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cvent.Lookup.DomainEntity\Cvent.Lookup.DomainEntity.csproj">
+      <Project>{899a0215-3562-4f0b-be3c-7cccb19a9078}</Project>
+      <Name>Cvent.Lookup.DomainEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cvent.Lookup.DataAccess\Cvent.Lookup.DataAccess.csproj">
+      <Project>{48d9e4a9-86c6-4dd6-a547-8d0bbddce69c}</Project>
+      <Name>Cvent.Lookup.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cvent.Lookup.DomainEntity\Cvent.Lookup.DomainEntity.csproj">
+      <Project>{899a0215-3562-4f0b-be3c-7cccb19a9078}</Project>
+      <Name>Cvent.Lookup.DomainEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\MSBuild.Extension.Pack.1.6.0\build\net40\MSBuild.Extension.Pack.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
